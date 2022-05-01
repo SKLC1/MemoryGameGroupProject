@@ -1,15 +1,15 @@
-:root{
+:root {
   font-size: 10px;
 }
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
-  height: 100vh
+body {
+  height: 100vh;
 }
-.main-container{
+.main-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -19,29 +19,30 @@ body{
   background-color: red;
 }
 /* header */
-.header{
+.header {
   width: 100%;
   height: 10%;
   background-color: brown;
 }
-.game-title{
+.game-title {
   background-color: blue;
 }
 /* game */
-.game-container{
+.game-container {
   width: 100%;
   height: 90%;
   display: flex;
   background-color: green;
+  background-color: orange;
 }
-.grid-container{
+.grid-container {
   width: 70%;
   height: 100%;
   display: grid;
   background-color: aquamarine;
 }
 /* stats */
-.stats-container{
+.stats-container {
   width: 30%;
   height: 100%;
   display: flex;
@@ -59,16 +60,16 @@ body{
 }
 
 /* media */
-@media(max-width: 800px){
-  .game-container{
+@media (max-width: 800px) {
+  .game-container {
     flex-direction: column;
   }
-  .grid-container{
+  .grid-container {
     width: 100%;
     height: 100%;
     display: grid;
   }
-  .stats-container{
+  .stats-container {
     width: 100%;
     flex-direction: row;
   }
