@@ -1,10 +1,9 @@
 
 export function addEventToGrid (grid,selectedOne,selectedTwo){
 function handleSelect (e) {
-  if(!e.target.className.includes('grid-container')){
-
+  if(!e.target.className.includes('grid-container')&&(!e.target.className.includes('flipped'))){
     if (e.target.className.includes('card')) { 
-      e.target.classList.toggle('unselected')
+      e.target.classList.remove('unselected')
     }
     if(!selectedOne){
       selectedOne = e.target
@@ -15,6 +14,8 @@ function handleSelect (e) {
     if(selectedOne.dataset.num === selectedTwo.dataset.num){
       selectedOne.classList.remove('unselected')
       selectedTwo.classList.remove('unselected')
+      selectedOne.classList.add('flipped')
+      selectedTwo.classList.add('flipped')
       selectedOne = null;
       selectedTwo = null;
     } else {
