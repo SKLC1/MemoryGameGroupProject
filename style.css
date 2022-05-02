@@ -38,7 +38,10 @@ body{
   width: 70%;
   height: 100%;
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   background-color: aquamarine;
+  gap: 1rem;
 }
 /* stats */
 .stats-container{
@@ -72,6 +75,11 @@ body{
   border-radius: 5px;
   text-align: center;
   font-size: 3rem;
+}
+
+.card {
+  background-color: red;
+  margin: 1rem;
 }
 
 /* media */
