@@ -8,7 +8,7 @@ export function generateMatrix() {
   let num = 0; 
   let cards = 0;
   for (let i = 0; i < 16; i++) { // random array of pairs
-      num = Math.floor(Math.random()*12);
+      num = Math.floor(Math.random()*6);
       if(!randomArr.includes(num) && randomArr.length < 12){
         randomArr.push(num);
         randomArr.push(num);
