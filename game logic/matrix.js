@@ -4,16 +4,7 @@
 // generate random matrix
 export function generateMatrix() {
   let matrix = [];
-  let randomArr = [];
-  let num = 0; 
-  let cards = 0;
-  for (let i = 0; i < 16; i++) { // random array of pairs
-      num = Math.floor(Math.random()*6);
-      if(!randomArr.includes(num) && randomArr.length < 12){
-        randomArr.push(num);
-        randomArr.push(num);
-      }
-    }
+  let randomArr = Array.from(Array(6).keys()).concat(Array.from(Array(6).keys()))
   let shuffled = randomArr.sort(()=> Math.random()-0.5);
   // slice into 3 and push into matrix
   for (let j = 0; j < shuffled.length; j+=3) {

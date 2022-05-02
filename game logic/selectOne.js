@@ -30,7 +30,6 @@ function handleSelect (e) {
 }
 
 function removeListener (grid,handleSelect) {
-  console.log('workd');
   grid.removeEventListener('click', handleSelect)
   setTimeout(()=>{
     grid.addEventListener('click', handleSelect)
