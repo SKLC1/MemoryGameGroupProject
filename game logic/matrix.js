@@ -6,9 +6,10 @@ export function generateMatrix() {
   let matrix = [];
   let randomArr = [];
   let num = 0; 
-  for (let i = 0; i < 10; i++) { // random array of pairs
-      num = Math.floor(Math.random() *7)+1;
-      if(!randomArr.includes(num)){
+  let cards = 0;
+  for (let i = 0; i < 16; i++) { // random array of pairs
+      num = Math.floor(Math.random()*12);
+      if(!randomArr.includes(num) && randomArr.length < 12){
         randomArr.push(num);
         randomArr.push(num);
       }
