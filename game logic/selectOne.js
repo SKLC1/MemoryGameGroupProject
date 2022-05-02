@@ -1,15 +1,17 @@
 
 export function addEventToGrid (grid,selectedOne,selectedTwo){
 function handleSelect (e) {
-  if (e.target.className.includes('card')) { 
-    e.target.classList.toggle('unselected')
-  }
-  if(!selectedOne){
-    selectedOne = e.target
-  } else {
-    selectedTwo = e.target
-  }
-  if(selectedOne && selectedTwo){
+  if(!e.target.className.includes('grid-container')){
+
+    if (e.target.className.includes('card')) { 
+      e.target.classList.toggle('unselected')
+    }
+    if(!selectedOne){
+      selectedOne = e.target
+    } else {
+      selectedTwo = e.target
+    }
+    if(selectedOne && selectedTwo){
     if(selectedOne.dataset.num === selectedTwo.dataset.num){
       selectedOne.classList.remove('unselected')
       selectedTwo.classList.remove('unselected')
@@ -24,9 +26,11 @@ function handleSelect (e) {
         selectedTwo = null;
       },1000)
     }
+    }
   }
 }  
   grid.addEventListener('click', handleSelect)
+  
 }
 
 function removeListener (grid,handleSelect) {
