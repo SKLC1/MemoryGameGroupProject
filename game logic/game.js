@@ -1,11 +1,16 @@
+// game functions imports
 import {generateMatrix} from "./matrix.js";
+import {addEventToGrid} from "./selectOne.js";
+
 
 const elements = {
     gridContainer : document.querySelector(".grid-container")
 }
 
 const state = {
-    cardsTable : generateMatrix()
+    cardsTable : generateMatrix(),
+    selectedOne : null,
+    selectedTwo : null,
 }
 
 function drawCards(matrix, elementToAppend) {
@@ -13,7 +18,7 @@ function drawCards(matrix, elementToAppend) {
         for(let num of row) {
             const card = document.createElement("div");
             card.setAttribute("data-num", `${num}`);
-            card.classList.add(`${num}`, "card");
+            card.classList.add(`match${num}`, "card", 'unselected');
             elementToAppend.append(card);
         }
     }
@@ -21,3 +26,4 @@ function drawCards(matrix, elementToAppend) {
 
 console.log(state);
 drawCards(state.cardsTable, elements.gridContainer)
+addEventToGrid(elements.gridContainer,state.selectedOne,state.selectedTwo)
