@@ -58,6 +58,22 @@ body{
   margin: 1rem;
 }
 
+/* stopwatch */
+.timer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stopwatch{
+  width: 100%;
+  height: 20%;
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(0,139,253,0.25);
+  border-radius: 5px;
+  text-align: center;
+  font-size: 3rem;
+}
+
 /* media */
 @media(max-width: 800px){
   .game-container{
@@ -71,6 +87,10 @@ body{
   .stats-container{
     width: 100%;
     flex-direction: row;
+  }
+  .stopwatch{
+    font-size: 3rem;
+    height: 40%;
   }
 }
 /* segev */
