@@ -5,21 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <title>Memory Game 🧠</title>
   </head>
   <body>
     <div class="main-container">
       <div class="header">
-        <h1 class="game-title"></h1>
+        <h1 class="game-title">MEMORY GAME</h1>
       </div>
       <div class="game-container">
         <div class="grid-container"></div>
+
         <ul class="stats-container">
-          <li class="timer"></li>
-          <li class="new-gamesss"></li>
+          <li class="timer">
+            <div class="stopwatch"></div>
+          </li>
+          <li class="new-games"></li>
           <li class="wrongs-counter"></li>
         </ul>
       </div>
     </div>
+    <script src="./game logic/stopwatch.js"></script>
+    <script src="./game logic/game.js" defer type="module"></script>
   </body>
 </html>
