@@ -1,4 +1,4 @@
-// game functions imports
+
 import {generateMatrix} from "./matrix.js";
 import {addEventToGrid} from "./selectOne.js";
 
@@ -98,3 +98,4 @@ function resetTimer() {
 }
 
 initializeGame(state);
+
