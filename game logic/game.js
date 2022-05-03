@@ -4,11 +4,12 @@ import {addEventToGrid} from "./selectOne.js";
 
 
 const elements = {
-    gridContainer : document.querySelector(".grid-container")
+    gridContainer : document.querySelector(".grid-container"),
+    newGameBtn : document.querySelector(".new-game-btn"),
 }
 
 const state = {
-    cardsTable : generateMatrix(),
+    cardsTable : null,
     selectedOne : null,
     selectedTwo : null,
 }
@@ -24,6 +25,29 @@ function drawCards(matrix, elementToAppend) {
     }
 }
 
-console.log(state);
-drawCards(state.cardsTable, elements.gridContainer)
-addEventToGrid(elements.gridContainer,state.selectedOne,state.selectedTwo)
+function addEventToButton(button, selectedOne, selectedTwo) {
+    button.addEventListener("click", () => {resetGame(selectedOne, selectedTwo)})
+}
+
+function clearCards() {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach(card => card.remove());
+}
+
+function resetGame(selectedOne, selectedTwo) {
+    selectedOne = null;
+    selectedTwo = null;
+    clearCards();
+    startGame(state);
+}
+
+function startGame(state) {
+    state.cardsTable = generateMatrix();
+    drawCards(state.cardsTable, elements.gridContainer);
+    addEventToGrid(elements.gridContainer,state.selectedOne,state.selectedTwo);
+    addEventToButton(elements.newGameBtn, state.selectedOne,state.selectedTwo);
+}
+
+startGame(state);
+console.log(state.cardsTable);
+
