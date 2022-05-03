@@ -8,6 +8,7 @@ const elements = {
   newGameBtnPopUp: document.querySelector(".new-game-btn-popup"),
   timer: document.querySelector(".stopwatch"),
   wrongsCounter: document.querySelector(".counter"),
+  highest: document.getElementById("highest"),
 };
 
 const state = {
@@ -22,7 +23,13 @@ const state = {
   correctGuessesCounter: 0,
   numOfCards: 0,
   timer: "",
-  highest: {
+  highestScore: {
+    score: 0,
+    time: 0,
+    player: "",
+    sec: 0,
+  },
+  highestTime: {
     score: 0,
     time: 0,
     player: "",
@@ -42,6 +49,8 @@ function updateCounter(res) {
     const isHighestOrNot = isHighest(state);
     popUp(state.wrongGuessesCounter, state.timer, isHighestOrNot);
     clearTimeout(state.timerId);
+    elements.highest.children[0].innerHTML = `Highest Score: ${state.highestScore.score}`;
+    elements.highest.children[1].innerHTML = `Best Time: ${state.highestTime.time}`;
   }
 }
 
