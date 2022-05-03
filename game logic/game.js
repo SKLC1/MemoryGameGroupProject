@@ -66,16 +66,17 @@ function timerCycle() {
     state.sec = sec + 1;
 
     if (sec == 60) {
-      min = min + 1;
-      sec = 0;
+        state.min = min + 1;
+        state.sec = 0;
     }
     if (min == 60) {
-      min = 0;
-      sec = 0;
+        state.hour = hr + 1;
+        state.min = 0;
+        state.sec = 0;
     }
 
     if (sec < 10 || sec == 0) {
-      sec = '0' + sec;
+        sec = '0' + sec;
     }
     if (min < 10 || min == 0) {
       min = '0' + min;
@@ -83,7 +84,6 @@ function timerCycle() {
     if(hr < 10) {
         hr = '0' + hr;
     }
-
     elements.timer.innerHTML = `${hr}:${min}:${sec}`
 
     state.timerId = setTimeout(timerCycle, 1000);
