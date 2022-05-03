@@ -5,9 +5,11 @@ export function popUp(wrongGuessesCounter, timer, isHighestOrNot) {
   const innerTextEle = popUpElement.children[1];
   popUpElement.classList.add("active");
   overlay.classList.add("active");
-  isHighestOrNot
-    ? (innerTextEle.innerHTML = `New Record ! ! ! ${wrongGuessesCounter} wrong guesses in ${timer}`)
-    : (innerTextEle.innerHTML = `Congratulations you won with ${wrongGuessesCounter} wrong guesses in ${timer}`);
+  innerTextEle.innerHTML = isHighestOrNot;
+  console.log(isHighestOrNot);
+  // isHighestOrNot
+  //   ? (innerTextEle.innerHTML = `New Record ! ! ! ${wrongGuessesCounter} wrong guesses in ${timer}`)
+  //   : (innerTextEle.innerHTML = `Congratulations you won with ${wrongGuessesCounter} wrong guesses in ${timer}`);
 }
 
 export function disablePopUp() {
