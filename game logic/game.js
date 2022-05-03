@@ -82,35 +82,36 @@ function startGame(state) {
   timerCycle();
 }
 
-function timerCycle() {
-  let sec = state.sec;
-  let min = state.min;
-  let hr = state.hour;
 
-  state.sec = sec + 1;
+    let sec = state.sec;
+    let min = state.min;
+    let hr = state.hour;
 
-  if (sec == 60) {
-    min = min + 1;
-    sec = 0;
-  }
-  if (min == 60) {
-    min = 0;
-    sec = 0;
-  }
+    state.sec = sec + 1;
 
-  if (sec < 10 || sec == 0) {
-    sec = "0" + sec;
-  }
-  if (min < 10 || min == 0) {
-    min = "0" + min;
-  }
-  if (hr < 10) {
-    hr = "0" + hr;
-  }
+    if (sec == 60) {
+        state.min = min + 1;
+        state.sec = 0;
+    }
+    if (min == 60) {
+        state.hour = hr + 1;
+        state.min = 0;
+        state.sec = 0;
+    }
 
-  elements.timer.innerHTML = `${hr}:${min}:${sec}`;
+    if (sec < 10 || sec == 0) {
+        sec = '0' + sec;
+    }
+    if (min < 10 || min == 0) {
+      min = '0' + min;
+    }
+    if(hr < 10) {
+        hr = '0' + hr;
+    }
+    elements.timer.innerHTML = `${hr}:${min}:${sec}`
 
-  state.timerId = setTimeout(timerCycle, 1000);
+    state.timerId = setTimeout(timerCycle, 1000);
+
 }
 
 function resetTimer() {
