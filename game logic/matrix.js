@@ -1,5 +1,5 @@
-// ? feel free to edit this grid  selector into state object
-// const grid = document.querySelector('grid-container')
+
+
 
 // generate random matrix
 export function generateMatrix() {
@@ -11,5 +11,5 @@ export function generateMatrix() {
     matrix.push(shuffled.slice(j,j+3));
   }
   return matrix
-}
-// console.log(generateMatrix());
+
+
