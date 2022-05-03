@@ -1,7 +1,7 @@
 import { generateMatrix } from "./matrix.js";
 import { addEventToGrid } from "./selectOne.js";
 import { popUp, disablePopUp } from "./userWon.js";
-
+import { isHighest } from "./isHighest.js";
 const elements = {
   gridContainer: document.querySelector(".grid-container"),
   newGameBtn: document.querySelector(".new-game-btn"),
@@ -26,6 +26,7 @@ const state = {
     score: 0,
     time: 0,
     player: "",
+    sec: 0,
   },
 };
 
@@ -37,10 +38,11 @@ function updateCounter(res) {
   } else state.correctGuessesCounter += 1; // else we will increment the correct counter
 
   if (state.correctGuessesCounter === state.numOfCards) {
-    popUp(state.wrongGuessesCounter, state.timer);
+    console.log(state);
+    const isHighestOrNot = isHighest(state);
+    popUp(state.wrongGuessesCounter, state.timer, isHighestOrNot);
     clearTimeout(state.timerId);
   }
-  console.log("state", state);
 }
 
 function drawCards(matrix, elementToAppend) {
@@ -101,7 +103,6 @@ function timerCycle() {
   let sec = state.sec;
   let min = state.min;
   let hr = state.hour;
-
   state.sec = sec + 1;
 
   if (sec == 60) {
