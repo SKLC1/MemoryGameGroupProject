@@ -46,11 +46,15 @@ function resetGame(selectedOne, selectedTwo) {
     startGame(state);
 }
 
+function initializeGame(state) {
+    addEventToGrid(elements.gridContainer,state.selectedOne,state.selectedTwo);
+    addEventToButton(elements.newGameBtn, state.selectedOne,state.selectedTwo);
+    startGame(state);
+}
+
 function startGame(state) {
     state.cardsTable = generateMatrix();
     drawCards(state.cardsTable, elements.gridContainer);
-    addEventToGrid(elements.gridContainer,state.selectedOne,state.selectedTwo);
-    addEventToButton(elements.newGameBtn, state.selectedOne,state.selectedTwo);
     timerCycle();
 }
 
@@ -93,5 +97,4 @@ function resetTimer() {
     elements.timer.innerHTML = '00:00:00';
 }
 
-startGame(state);
-
+initializeGame(state);
