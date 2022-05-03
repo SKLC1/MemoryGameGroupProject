@@ -49,5 +49,4 @@ function startGame(state) {
 }
 
 startGame(state);
-console.log(state.cardsTable);
 

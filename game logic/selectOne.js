@@ -5,7 +5,7 @@ export function addEventToGrid (grid,selectedOne,selectedTwo){
       if (e.target.className.includes('card')) { 
         e.target.classList.remove('unselected')
       }
-      if(!selectedOne){
+      if(!selectedOne || selectedOne === e.target){ // if user press the same card twice selectedTwo wont update
         selectedOne = e.target
       } else {
         selectedTwo = e.target
