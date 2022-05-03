@@ -1,5 +1,6 @@
 
-export function addEventToGrid (grid,selectedOne,selectedTwo){
+
+export function addEventToGrid (grid,selectedOne,selectedTwo,updateCounter){
   function handleSelect (e) {
     if(!e.target.className.includes('grid-container')&&(!e.target.className.includes('flipped'))){
       if (e.target.className.includes('card')) { 
@@ -18,6 +19,7 @@ export function addEventToGrid (grid,selectedOne,selectedTwo){
           selectedTwo.classList.add('flipped')
           selectedOne = null;
           selectedTwo = null;
+          updateCounter(true);
         } else {
           removeListener(grid,handleSelect)
           setTimeout(()=>{
@@ -25,6 +27,7 @@ export function addEventToGrid (grid,selectedOne,selectedTwo){
             selectedTwo.classList.add('unselected')
             selectedOne = null;
             selectedTwo = null;
+            updateCounter(false);
           },1000)
         }
       }
@@ -40,3 +43,4 @@ function removeListener (grid,handleSelect) {
     grid.addEventListener('click', handleSelect)
   },1000)
 }
+
