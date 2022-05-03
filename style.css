@@ -149,6 +149,16 @@ body {
 #pop-up.active {
   transform: translate(-50%, -50%) scale(1);
 }
+
+#pop-up .close-button {
+  position: absolute;
+  cursor: pointer;
+  right: 1%;
+  top: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 4rem;
+}
 #overlay {
   position: fixed;
   opacity: 0;

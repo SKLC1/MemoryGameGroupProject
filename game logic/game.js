@@ -6,6 +6,7 @@ const elements = {
   gridContainer: document.querySelector(".grid-container"),
   newGameBtn: document.querySelector(".new-game-btn"),
   newGameBtnPopUp: document.querySelector(".new-game-btn-popup"),
+  closePopUpBtn: document.querySelector(".close-button"),
   timer: document.querySelector(".stopwatch"),
   wrongsCounter: document.querySelector(".counter"),
   highest: document.getElementById("highest"),
@@ -68,9 +69,13 @@ function drawCards(matrix, elementToAppend) {
 }
 
 function addEventToButton(button, selectedOne, selectedTwo) {
-  button.addEventListener("click", () => {
-    resetGame(selectedOne, selectedTwo);
-  });
+  console.dir(button.className);
+  if (button.className === "close-button")
+    button.addEventListener("click", disablePopUp);
+  else
+    button.addEventListener("click", () => {
+      resetGame(selectedOne, selectedTwo);
+    });
 }
 
 function clearCards() {
@@ -100,6 +105,7 @@ function initializeGame(state) {
     state.selectedOne,
     state.selectedTwo
   );
+  addEventToButton(elements.closePopUpBtn);
   startGame(state);
 }
 
