@@ -1,10 +1,11 @@
 import { generateMatrix } from "./matrix.js";
 import { addEventToGrid } from "./selectOne.js";
-import { popUp } from "./userWon.js";
+import { popUp, disablePopUp } from "./userWon.js";
 
 const elements = {
   gridContainer: document.querySelector(".grid-container"),
   newGameBtn: document.querySelector(".new-game-btn"),
+  newGameBtnPopUp: document.querySelector(".new-game-btn-popup"),
   timer: document.querySelector(".stopwatch"),
   wrongsCounter: document.querySelector(".counter"),
 };
@@ -20,6 +21,12 @@ const state = {
   wrongGuessesCounter: 0,
   correctGuessesCounter: 0,
   numOfCards: 0,
+  timer: "",
+  highest: {
+    score: 0,
+    time: 0,
+    player: "",
+  },
 };
 
 function updateCounter(res) {
@@ -29,8 +36,11 @@ function updateCounter(res) {
     elements.wrongsCounter.innerHTML = state.wrongGuessesCounter;
   } else state.correctGuessesCounter += 1; // else we will increment the correct counter
 
-  if (state.correctGuessesCounter === state.numOfCards)
-    popUp(state.wrongGuessesCounter);
+  if (state.correctGuessesCounter === state.numOfCards) {
+    popUp(state.wrongGuessesCounter, state.timer);
+    clearTimeout(state.timerId);
+  }
+  console.log("state", state);
 }
 
 function drawCards(matrix, elementToAppend) {
@@ -62,6 +72,7 @@ function resetGame(selectedOne, selectedTwo) {
   selectedTwo = null;
   clearCards();
   resetTimer();
+  resetCounters();
   startGame(state);
 }
 
@@ -73,6 +84,11 @@ function initializeGame(state) {
     updateCounter
   );
   addEventToButton(elements.newGameBtn, state.selectedOne, state.selectedTwo);
+  addEventToButton(
+    elements.newGameBtnPopUp,
+    state.selectedOne,
+    state.selectedTwo
+  );
   startGame(state);
 }
 
@@ -108,6 +124,7 @@ function timerCycle() {
     hr = "0" + hr;
   }
   elements.timer.innerHTML = `${hr}:${min}:${sec}`;
+  state.timer = `${hr}:${min}:${sec}`;
 
   state.timerId = setTimeout(timerCycle, 1000);
 }
@@ -118,6 +135,13 @@ function resetTimer() {
   state.min = 0;
   state.hour = 0;
   elements.timer.innerHTML = "00:00:00";
+}
+function resetCounters() {
+  state.correctGuessesCounter = 0;
+  state.wrongGuessesCounter = 0;
+  state.numOfCards = 0;
+  elements.wrongsCounter.innerHTML = state.wrongGuessesCounter;
+  disablePopUp();
 }
 
 initializeGame(state);
