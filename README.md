@@ -1,2 +1,2 @@
 # MemoryGameGroupProject
-https://app.netlify.com/sites/silver-longma-425071/overview
+https://silver-longma-425071.netlify.app/
