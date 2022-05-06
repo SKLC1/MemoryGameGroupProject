@@ -27,7 +27,7 @@ export function isHighest({
       (highestTime.time = timer),
       (highestTime.score = wrongGuessesCounter);
     if (result.length > 1) result += `And Also New Time Record !  ${timer}`;
-    else result += `New Time Record ${wrongGuessesCounter} `;
+    else result += `New Time Record ${timer} `;
   }
   if (result.length < 1)
     result = `Congratulations you won with ${wrongGuessesCounter} wrong guesses ${timer}`;

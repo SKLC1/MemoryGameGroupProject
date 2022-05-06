@@ -2,6 +2,7 @@ import { generateMatrix } from "./matrix.js";
 import { addEventToGrid } from "./selectOne.js";
 import { popUp, disablePopUp } from "./userWon.js";
 import { isHighest } from "./isHighest.js";
+import { getChosenAmount } from './matrix.js'
 const elements = {
   gridContainer: document.querySelector(".grid-container"),
   newGameBtn: document.querySelector(".new-game-btn"),
@@ -10,9 +11,13 @@ const elements = {
   timer: document.querySelector(".stopwatch"),
   wrongsCounter: document.querySelector(".counter"),
   highest: document.getElementById("highest"),
+  cardsAmountInput: document.querySelector(".choose-amount"),
+  amountCount: document.querySelector('.cards-amount-container')
 };
 
+
 const state = {
+  chosenAmount: null, 
   cardsTable: null,
   selectedOne: null,
   selectedTwo: null,
@@ -36,6 +41,7 @@ const state = {
     player: "",
     sec: 0,
   },
+  isMsg: false,
 };
 
 function updateCounter(res) {
@@ -110,7 +116,8 @@ function initializeGame(state) {
 }
 
 function startGame(state) {
-  state.cardsTable = generateMatrix();
+  state.chosenAmount = getChosenAmount(elements.cardsAmountInput,elements.amountCount)
+  state.cardsTable = generateMatrix(state.chosenAmount);
   drawCards(state.cardsTable, elements.gridContainer);
   timerCycle();
 }
